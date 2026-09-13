@@ -6,7 +6,7 @@
 <title>Hair Salon adoa | 青梅・河辺</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Noto+Sans+JP:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
     --stone:#E9E3D8;
@@ -31,68 +31,85 @@
   h1,h2,h3{ font-family:'Shippori Mincho', serif; color:var(--ink); }
   a{ color:inherit; text-decoration:none; }
   img{ max-width:100%; display:block; }
-  .wrap{ max-width:1040px; margin:0 auto; padding:0 28px; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
+  .en-serif{ font-family:'Cormorant Garamond', serif; font-style:italic; }
+
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .rise{ animation:rise .9s cubic-bezier(.2,.8,.2,1) both; }
+  .rise-1{ animation-delay:.05s; }
+  .rise-2{ animation-delay:.18s; }
+  .rise-3{ animation-delay:.3s; }
 
   /* ---- top bar ---- */
   .topbar{
     position:sticky; top:0; z-index:30;
-    background:rgba(233,227,216,.92);
-    backdrop-filter:blur(6px);
+    background:rgba(233,227,216,.9);
+    backdrop-filter:blur(8px);
     border-bottom:1px solid rgba(43,33,29,.1);
   }
   .topbar-inner{
-    max-width:1040px; margin:0 auto; padding:16px 28px;
+    max-width:1120px; margin:0 auto; padding:14px 32px;
     display:flex; align-items:center; justify-content:space-between;
+    gap:24px;
   }
-  .brand-mini{ font-family:'Shippori Mincho', serif; font-size:19px; letter-spacing:.08em; }
-  .brand-mini-logo{ height:34px; width:auto; }
+  .brand-mini-logo{ height:32px; width:auto; flex-shrink:0; }
+  .nav-links{
+    display:flex; gap:30px; list-style:none;
+    font-size:13px; letter-spacing:.06em;
+  }
+  .nav-links a{ position:relative; padding-bottom:3px; }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; right:100%; bottom:0;
+    height:1px; background:var(--wine);
+    transition:right .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .nav-links a:hover::after{ right:0; }
+  .topbar-right{ display:flex; align-items:center; gap:18px; flex-shrink:0; }
   .tel-mini{
-    font-size:14px; letter-spacing:.04em;
+    font-size:13px; letter-spacing:.04em;
     border:1px solid var(--ink); border-radius:999px;
-    padding:8px 20px;
+    padding:8px 18px; white-space:nowrap;
   }
 
   /* ---- hero ---- */
-  .hero{ padding:88px 0 0; }
-  .hero-top{ text-align:left; margin-bottom:56px; }
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:88vh;
+  }
+  .hero-left{
+    display:flex; flex-direction:column; justify-content:center;
+    padding:60px 32px 60px clamp(32px, 6vw, 88px);
+  }
   .hero-eyebrow{
-    color:var(--ink-soft); font-size:14px; letter-spacing:.14em; margin-bottom:18px;
+    color:var(--ink-soft); font-size:13px; letter-spacing:.18em; margin-bottom:22px;
   }
-  .hero-logo{ height:58px; width:auto; margin-bottom:26px; }
-  .hero h1{
-    font-size:clamp(56px, 11vw, 108px);
-    font-weight:600;
-    line-height:1;
-    letter-spacing:.02em;
-    margin-bottom:28px;
-  }
+  .hero-logo{ height:52px; width:auto; margin-bottom:30px; }
   .hero-tagline{
-    font-size:clamp(16px,2.4vw,19px);
+    font-size:clamp(17px,2vw,20px);
     color:var(--ink-soft);
-    max-width:30em;
-    margin-bottom:30px;
+    max-width:24em;
+    margin-bottom:34px;
   }
-  .swatches{ display:flex; gap:10px; margin-bottom:8px; }
+  .swatches{ display:flex; gap:10px; margin-bottom:40px; }
   .swatch{ width:13px; height:13px; border-radius:50%; }
   .sw-a{ background:#8B8B92; }
   .sw-b{ background:#6E2A3A; }
   .sw-c{ background:#B79AB0; }
   .sw-d{ background:#8A6A4E; }
 
-  .hero-photo{
-    width:100%;
-    aspect-ratio:16/8;
-    overflow:hidden;
-  }
-  .hero-photo img{
-    width:100%; height:100%; object-fit:cover;
+  .hero-right{ position:relative; overflow:hidden; min-height:420px; }
+  .hero-right img{ width:100%; height:100%; object-fit:cover; object-position:60% 40%; }
+  .hero-caption{
+    position:absolute; left:24px; bottom:24px;
+    color:var(--paper); font-size:12px; letter-spacing:.08em;
+    background:rgba(43,33,29,.5); padding:7px 14px;
   }
 
-  .hero-cta{
-    display:flex; gap:14px; flex-wrap:wrap;
-    padding:26px 28px 0;
-    max-width:1040px; margin:0 auto;
-  }
+  .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
     padding:14px 26px;
@@ -102,61 +119,89 @@
   .btn-ghost{ border:1px solid var(--ink); }
 
   /* ---- section shell ---- */
-  section{ padding:100px 0; }
+  section{ padding:120px 0; }
   .rule{ border:none; border-top:1px solid rgba(43,33,29,.15); }
+  .section-num{ font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--wine); font-size:15px; letter-spacing:.08em; margin-bottom:16px; display:block; }
 
-  /* ---- concept (about) ---- */
+  /* ---- concept (editorial spread) ---- */
   .concept{
     display:grid;
-    grid-template-columns:.85fr 1fr;
-    gap:64px;
-    align-items:center;
+    grid-template-columns:.9fr 1.1fr;
+    gap:0 72px;
+    align-items:start;
   }
+  .concept-media{ position:relative; }
   .concept-photo{
     aspect-ratio:3/4;
-    background:linear-gradient(150deg,#CFC3AF,#B9A98F 70%);
+    overflow:hidden;
   }
-  .concept h2{ font-size:clamp(26px,4vw,34px); font-weight:600; margin-bottom:22px; line-height:1.5; }
-  .concept p{ color:var(--ink-soft); margin-bottom:16px; }
+  .concept-photo img{ width:100%; height:100%; object-fit:cover; object-position:20% 60%; }
+  .concept-stats{
+    display:flex; gap:28px;
+    margin-top:24px;
+    padding-top:24px;
+    border-top:1px solid rgba(43,33,29,.15);
+  }
+  .stat-num{ font-family:'Shippori Mincho', serif; font-size:26px; }
+  .stat-label{ font-size:11px; color:var(--ink-soft); letter-spacing:.04em; margin-top:4px; }
+  .concept-text{ padding-top:38px; }
+  .concept h2{ font-size:clamp(28px,4vw,38px); font-weight:600; margin-bottom:26px; line-height:1.55; }
+  .concept p{ color:var(--ink-soft); margin-bottom:18px; }
   .concept p:last-child{ margin-bottom:0; }
 
   /* ---- menu list (not cards) ---- */
-  .menu-head{ margin-bottom:44px; }
-  .menu-head h2{ font-size:clamp(26px,4vw,34px); font-weight:600; margin-bottom:14px; }
+  .menu-head{ margin-bottom:48px; }
+  .menu-head h2{ font-size:clamp(28px,4vw,38px); font-weight:600; margin-bottom:14px; }
   .menu-head p{ color:var(--ink-soft); max-width:32em; }
 
   .menu-item{
     display:grid;
-    grid-template-columns:140px 1fr auto;
+    grid-template-columns:150px 1fr auto;
     gap:24px;
     align-items:baseline;
-    padding:30px 0;
+    padding:32px 0;
     border-top:1px solid rgba(43,33,29,.15);
+    transition:padding-left .3s cubic-bezier(.2,.8,.2,1);
   }
+  .menu-item:hover{ padding-left:10px; }
   .menu-item:last-child{ border-bottom:1px solid rgba(43,33,29,.15); }
-  .menu-item .en{ font-family:'Shippori Mincho', serif; font-size:20px; }
+  .menu-item .en{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:24px; }
   .menu-item .desc h3{ font-size:17px; font-weight:600; margin-bottom:6px; }
   .menu-item .desc p{ color:var(--ink-soft); font-size:14px; }
-  .menu-item .arrow{ color:var(--wine); font-size:14px; white-space:nowrap; }
+  .menu-item .price{ color:var(--wine); font-size:14px; white-space:nowrap; font-family:'Shippori Mincho', serif; }
 
-  /* ---- color gallery ---- */
-  .gallery-head{ margin-bottom:40px; }
-  .gallery-head h2{ font-size:clamp(26px,4vw,34px); font-weight:600; margin-bottom:14px; }
+  /* ---- color gallery (masonry-feel) ---- */
+  .gallery-head{ margin-bottom:44px; }
+  .gallery-head h2{ font-size:clamp(28px,4vw,38px); font-weight:600; margin-bottom:14px; }
   .gallery-head p{ color:var(--ink-soft); max-width:34em; }
   .gallery-grid{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:2px;
+    grid-template-columns:repeat(6, 1fr);
+    grid-auto-rows:120px;
+    gap:3px;
   }
   .swatch-tile{
-    aspect-ratio:3/4;
     position:relative;
     display:flex; align-items:flex-end;
-    padding:16px;
+    padding:18px;
+    overflow:hidden;
+  }
+  .swatch-tile::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(43,33,29,.45), transparent 55%);
   }
   .swatch-tile span{
+    position:relative; z-index:1;
     color:var(--paper); font-size:13px; letter-spacing:.03em;
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:17px;
   }
+  .g-a{ grid-column:span 3; grid-row:span 2; }
+  .g-b{ grid-column:span 3; grid-row:span 3; }
+  .g-c{ grid-column:span 2; grid-row:span 2; }
+  .g-d{ grid-column:span 2; grid-row:span 2; }
+  .g-e{ grid-column:span 2; grid-row:span 2; }
+  .g-f{ grid-column:span 3; grid-row:span 2; }
+  .g-g{ grid-column:span 3; grid-row:span 2; }
   .t1{ background:linear-gradient(160deg,#B9B6B8,#8B8B92); }
   .t2{ background:linear-gradient(160deg,#8C3A4C,#5E212D); }
   .t3{ background:linear-gradient(160deg,#CBB0C4,#A084A0); }
@@ -164,35 +209,38 @@
   .t5{ background:linear-gradient(160deg,#4E6A82,#33475A); }
   .t6{ background:linear-gradient(160deg,#7A6A57,#584A3B); }
   .t7{ background:linear-gradient(160deg,#8E7A6E,#6B5A4E); }
-  .t8{ background:linear-gradient(160deg,#5C5652,#3A3532); }
-  .gallery-note{ margin-top:22px; font-size:13px; color:var(--ink-soft); }
+  .gallery-note{ margin-top:26px; font-size:13px; color:var(--ink-soft); }
 
   /* ---- staff teaser ---- */
   .staff{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:48px;
+    gap:64px;
     align-items:center;
   }
-  .staff h2{ font-size:clamp(24px,3.6vw,30px); font-weight:600; margin-bottom:18px; line-height:1.6; }
-  .staff p{ color:var(--ink-soft); margin-bottom:22px; }
-  .staff-num{ font-family:'Shippori Mincho', serif; font-size:15px; color:var(--wine); }
+  .staff h2{ font-size:clamp(26px,3.6vw,32px); font-weight:600; margin-bottom:20px; line-height:1.6; }
+  .staff p{ color:var(--ink-soft); margin-bottom:26px; }
+  .staff-num{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:16px; color:var(--wine); margin-bottom:8px; display:block; }
+  .staff-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
+  .staff-strip img{ aspect-ratio:1; object-fit:cover; filter:grayscale(.15); }
 
   .reviews{
     display:grid;
-    grid-template-columns:200px 1fr;
-    gap:48px;
+    grid-template-columns:220px 1fr;
+    gap:56px;
     align-items:center;
   }
-  .score-num{ font-family:'Shippori Mincho', serif; font-size:64px; font-weight:600; line-height:1; }
+  .score-num{ font-family:'Shippori Mincho', serif; font-size:68px; font-weight:600; line-height:1; }
   .score-label{ color:var(--ink-soft); font-size:13px; margin-top:10px; letter-spacing:.04em; }
+  .review-text{ position:relative; }
+  .review-mark{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:70px; color:var(--wine); line-height:.5; opacity:.4; display:block; margin-bottom:6px; }
   .review-text p{ color:var(--ink-soft); max-width:34em; }
 
   /* ---- access ---- */
   #access{ scroll-margin-top:72px; }
   .info-card{
     background:var(--paper);
-    padding:48px;
+    padding:52px;
   }
   .info-row{
     display:grid; grid-template-columns:120px 1fr;
@@ -205,7 +253,7 @@
   .info-label{ color:var(--ink-soft); letter-spacing:.04em; }
   .map-embed{
     width:100%; aspect-ratio:16/7;
-    margin-top:30px;
+    margin-top:32px;
     border:none;
     filter:sepia(.1) saturate(.85);
   }
@@ -213,35 +261,43 @@
   /* ---- footer cta ---- */
   .footer-cta{
     text-align:left;
-    padding:100px 0 120px;
+    padding:120px 0 130px;
     background:linear-gradient(180deg, var(--stone), var(--stone-deep));
   }
-  .footer-cta h2{ font-size:clamp(32px,6vw,52px); font-weight:600; margin-bottom:20px; line-height:1.3; }
-  .footer-cta p{ color:var(--ink-soft); margin-bottom:34px; max-width:28em; }
-  .sns-row{ display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
+  .footer-cta h2{ font-size:clamp(34px,6vw,56px); font-weight:600; margin-bottom:22px; line-height:1.3; }
+  .footer-cta p{ color:var(--ink-soft); margin-bottom:36px; max-width:28em; }
+  .sns-row{ display:flex; gap:16px; margin-top:38px; flex-wrap:wrap; }
   .sns-badge{
     display:inline-flex; align-items:center; gap:8px;
     font-size:13px; color:var(--ink-soft);
     border:1px solid rgba(43,33,29,.25);
     border-radius:999px;
     padding:9px 18px;
+    transition:border-color .25s, color .25s;
   }
+  .sns-badge:hover{ border-color:var(--wine); color:var(--wine); }
   .sns-badge svg{ color:var(--wine); flex-shrink:0; }
 
   footer{
-    padding:30px 28px;
+    padding:32px;
     font-size:12px;
     color:var(--ink-soft);
     border-top:1px solid rgba(43,33,29,.15);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
   }
 
-  @media (max-width:760px){
+  @media (max-width:900px){
+    .nav-links{ display:none; }
+    .hero{ grid-template-columns:1fr; min-height:auto; }
+    .hero-right{ order:-1; aspect-ratio:16/10; min-height:0; }
     .concept{ grid-template-columns:1fr; gap:32px; }
+    .concept-text{ padding-top:0; }
     .staff{ grid-template-columns:1fr; gap:28px; }
     .reviews{ grid-template-columns:1fr; gap:20px; }
-    .gallery-grid{ grid-template-columns:repeat(2,1fr); }
+    .gallery-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:140px; }
+    .g-a,.g-b,.g-c,.g-d,.g-e,.g-f,.g-g{ grid-column:span 1; grid-row:span 1; }
     .menu-item{ grid-template-columns:1fr; gap:8px; }
-    .menu-item .arrow{ margin-top:4px; }
+    .staff-strip{ grid-template-columns:repeat(4,1fr); }
   }
 </style>
 </head>
@@ -250,38 +306,67 @@
   <div class="topbar">
     <div class="topbar-inner">
       <img class="brand-mini-logo" src="adoa-images/logo.png" alt="Hair Salon adoa">
-      <a class="tel-mini" href="tel:0428232127">0428-23-2127</a>
+      <ul class="nav-links">
+        <li><a href="#concept">Concept</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#works">Color Works</a></li>
+        <li><a href="staff.html">Staff</a></li>
+        <li><a href="#access">Access</a></li>
+      </ul>
+      <div class="topbar-right">
+        <a class="tel-mini" href="tel:0428232127">0428-23-2127</a>
+      </div>
     </div>
   </div>
 
   <header class="hero">
-    <div class="wrap hero-top">
-      <img class="hero-logo" src="adoa-images/logo.png" alt="Hair Salon adoa">
-      <div class="hero-eyebrow">青梅 · 河辺 / Hair Salon</div>
-      <p class="hero-tagline">
+    <div class="hero-left">
+      <div class="hero-eyebrow rise rise-1">青梅 · 河辺 / Hair Salon</div>
+      <img class="hero-logo rise rise-1" src="adoa-images/logo.png" alt="Hair Salon adoa">
+      <p class="hero-tagline rise rise-2">
         青梅の街で五十年、髪と向き合ってきました。
         確かな技術と丁寧なカウンセリングで、なりたい色、似合う色をかたちにします。
       </p>
-      <div class="swatches">
+      <div class="swatches rise rise-2">
         <span class="swatch sw-a"></span>
         <span class="swatch sw-b"></span>
         <span class="swatch sw-c"></span>
         <span class="swatch sw-d"></span>
       </div>
+      <div class="hero-cta rise rise-3">
+        <a class="btn btn-primary" href="tel:0428232127">電話で予約する</a>
+        <a class="btn btn-ghost" href="#access">アクセス・営業時間</a>
+      </div>
     </div>
-    <div class="hero-photo">
+    <div class="hero-right">
       <img src="adoa-images/hero_1.png" alt="Hair Salon adoa 店内">
-    </div>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="tel:0428232127">電話で予約する</a>
-      <a class="btn btn-ghost" href="#access">アクセス・営業時間</a>
+      <div class="hero-caption">Salon Interior</div>
     </div>
   </header>
 
-  <section>
+  <section id="concept">
     <div class="wrap concept">
-      <div class="concept-photo"></div>
-      <div>
+      <div class="concept-media">
+        <div class="concept-photo">
+          <img src="adoa-images/hero_1.png" alt="Hair Salon adoa 店内">
+        </div>
+        <div class="concept-stats">
+          <div>
+            <div class="stat-num">50<span class="en-serif" style="font-size:16px;">yrs</span></div>
+            <div class="stat-label">河辺での歴史</div>
+          </div>
+          <div>
+            <div class="stat-num">10</div>
+            <div class="stat-label">在籍スタッフ</div>
+          </div>
+          <div>
+            <div class="stat-num">4.2</div>
+            <div class="stat-label">Google評価</div>
+          </div>
+        </div>
+      </div>
+      <div class="concept-text">
+        <span class="section-num">Concept</span>
         <h2>五十年変わらないのは、<br>丁寧さだけ。</h2>
         <p>
           adoaは青梅市河辺で50年以上、地域のお客様のキレイを実現するために技術を磨いてきました。
@@ -298,10 +383,11 @@
 
   <hr class="rule">
 
-  <section>
+  <section id="menu">
     <div class="wrap">
       <div class="menu-head">
-        <h2>Menu</h2>
+        <span class="section-num">Menu</span>
+        <h2>Menu &amp; Price</h2>
         <p>カットからカラー、まつげ、エステ、記念日のお支度まで。ひとつのサロンで完結します。</p>
       </div>
 
@@ -311,7 +397,7 @@
           <h3>カット・カラー・パーマ</h3>
           <p>丁寧なカウンセリングから、お客様に似合うスタイルをご提案します。</p>
         </div>
-        <div class="arrow">¥4,400〜</div>
+        <div class="price">¥4,400〜</div>
       </div>
       <div class="menu-item">
         <div class="en">Eyelash</div>
@@ -319,7 +405,7 @@
           <h3>まつげエクステンション</h3>
           <p>フラットラッシュ・LEDセーブル・セーブルまつげなど、豊富なラインナップ。</p>
         </div>
-        <div class="arrow">¥5,500〜</div>
+        <div class="price">¥5,500〜</div>
       </div>
       <div class="menu-item">
         <div class="en">Esthetic</div>
@@ -327,7 +413,7 @@
           <h3>脱毛・フェイシャル</h3>
           <p>光フェイシャルからボディ脱毛まで、髪と肌を同時にケアできます。</p>
         </div>
-        <div class="arrow">¥1,100〜</div>
+        <div class="price">¥1,100〜</div>
       </div>
       <div class="menu-item">
         <div class="en">Occasion</div>
@@ -335,26 +421,26 @@
           <h3>成人式・七五三</h3>
           <p>着付け・セット・メイクまで、記念日のお支度をトータルでサポートします。</p>
         </div>
-        <div class="arrow">¥11,000〜</div>
+        <div class="price">¥11,000〜</div>
       </div>
     </div>
   </section>
 
-  <section style="background:var(--paper);">
+  <section id="works" style="background:var(--paper);">
     <div class="wrap">
       <div class="gallery-head">
+        <span class="section-num">Color Works</span>
         <h2>Color Works</h2>
         <p>シルキーグレーからボルドールビーまで。Instagramで発信している実例を、こちらにも並べていきます。</p>
       </div>
       <div class="gallery-grid">
-        <div class="swatch-tile t1"><span>silky gray</span></div>
-        <div class="swatch-tile t2"><span>bordeaux ruby</span></div>
-        <div class="swatch-tile t3"><span>lavender pink</span></div>
-        <div class="swatch-tile t4"><span>ash brown</span></div>
-        <div class="swatch-tile t5"><span>cobalt blue</span></div>
-        <div class="swatch-tile t6"><span>umbrella color</span></div>
-        <div class="swatch-tile t7"><span>spiral perm</span></div>
-        <div class="swatch-tile t8"><span>men's short layer</span></div>
+        <div class="swatch-tile t2 g-a"><span>bordeaux ruby</span></div>
+        <div class="swatch-tile t1 g-c"><span>silky gray</span></div>
+        <div class="swatch-tile t3 g-d"><span>lavender pink</span></div>
+        <div class="swatch-tile t5 g-b"><span>cobalt blue</span></div>
+        <div class="swatch-tile t4 g-e"><span>ash brown</span></div>
+        <div class="swatch-tile t6 g-f"><span>umbrella color</span></div>
+        <div class="swatch-tile t7 g-g"><span>spiral perm</span></div>
       </div>
       <p class="gallery-note">※写真は準備中です。店内・スタイル写真が届き次第、順次差し替えます。</p>
     </div>
@@ -363,7 +449,7 @@
   <section>
     <div class="wrap staff">
       <div>
-        <div class="staff-num">Staff — 10名在籍</div>
+        <span class="staff-num">Staff — 10名在籍</span>
         <h2>トップスタイリストから<br>アイリストまで。</h2>
         <p>
           トップスタイリスト4名・スタイリスト1名・ジュニアスタイリスト2名・
@@ -372,7 +458,12 @@
         </p>
         <a class="btn btn-ghost" href="staff.html">スタッフ紹介を見る →</a>
       </div>
-      <div class="concept-photo" style="aspect-ratio:4/3;"></div>
+      <div class="staff-strip">
+        <img src="adoa-images/sawai.png" alt="sawai">
+        <img src="adoa-images/iwata.png" alt="iwata">
+        <img src="adoa-images/ikeda.png" alt="ikeda">
+        <img src="adoa-images/endo.png" alt="endo">
+      </div>
     </div>
   </section>
 
@@ -385,18 +476,22 @@
         <div class="score-label">Google クチコミ 31件</div>
       </div>
       <div class="review-text">
+        <span class="review-mark">"</span>
         <p>
-          「サロンの雰囲気は大好きです。とてもリラックスできます」
-          「とても親切に丁寧に対応いただき納得いく仕上がりでした」など、
-          長くご愛顧いただいているお客様からの声をいただいています。
+          サロンの雰囲気は大好きです。とてもリラックスできます。
+          とても親切に丁寧に対応いただき納得いく仕上がりでした。
+          長くご愛顧いただいているお客様から、そんな声をいただいています。
         </p>
       </div>
     </div>
   </section>
 
   <hr class="rule">
+
+  <section id="access">
     <div class="wrap">
       <div class="menu-head">
+        <span class="section-num">Access</span>
         <h2>Access</h2>
       </div>
       <div class="info-card">
@@ -452,7 +547,8 @@
   </section>
 
   <footer>
-    Hair Salon adoa　東京都青梅市河辺町10-12-41
+    <span>Hair Salon adoa　東京都青梅市河辺町10丁目12-41</span>
+    <span>Demo proposal by fuji-noren</span>
   </footer>
 
 </body>
