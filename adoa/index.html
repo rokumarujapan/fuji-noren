@@ -178,39 +178,29 @@
   .gallery-head p{ color:var(--ink-soft); max-width:34em; }
   .gallery-grid{
     display:grid;
-    grid-template-columns:repeat(6, 1fr);
-    grid-auto-rows:120px;
+    grid-template-columns:repeat(5, 1fr);
+    grid-auto-rows:170px;
+    grid-auto-flow:dense;
     gap:3px;
   }
   .swatch-tile{
     position:relative;
     display:flex; align-items:flex-end;
-    padding:18px;
+    padding:16px;
     overflow:hidden;
+    background-size:cover;
+    background-position:center;
   }
   .swatch-tile::after{
     content:""; position:absolute; inset:0;
-    background:linear-gradient(0deg, rgba(43,33,29,.45), transparent 55%);
+    background:linear-gradient(0deg, rgba(43,33,29,.6), transparent 60%);
   }
   .swatch-tile span{
     position:relative; z-index:1;
-    color:var(--paper); font-size:13px; letter-spacing:.03em;
+    color:var(--paper); letter-spacing:.03em;
     font-family:'Cormorant Garamond', serif; font-style:italic; font-size:17px;
   }
-  .g-a{ grid-column:span 3; grid-row:span 2; }
-  .g-b{ grid-column:span 3; grid-row:span 3; }
-  .g-c{ grid-column:span 2; grid-row:span 2; }
-  .g-d{ grid-column:span 2; grid-row:span 2; }
-  .g-e{ grid-column:span 2; grid-row:span 2; }
-  .g-f{ grid-column:span 3; grid-row:span 2; }
-  .g-g{ grid-column:span 3; grid-row:span 2; }
-  .t1{ background:linear-gradient(160deg,#B9B6B8,#8B8B92); }
-  .t2{ background:linear-gradient(160deg,#8C3A4C,#5E212D); }
-  .t3{ background:linear-gradient(160deg,#CBB0C4,#A084A0); }
-  .t4{ background:linear-gradient(160deg,#A9825F,#7C5C3F); }
-  .t5{ background:linear-gradient(160deg,#4E6A82,#33475A); }
-  .t6{ background:linear-gradient(160deg,#7A6A57,#584A3B); }
-  .t7{ background:linear-gradient(160deg,#8E7A6E,#6B5A4E); }
+  .g-feature{ grid-column:span 2; grid-row:span 2; }
   .gallery-note{ margin-top:26px; font-size:13px; color:var(--ink-soft); }
 
   /* ---- staff teaser ---- */
@@ -341,7 +331,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <img src="adoa-images/hero_1.png" alt="Hair Salon adoa 店内">
+      <img src="adoa-images/interior_mirrors_wood.jpg" alt="Hair Salon adoa 店内">
       <div class="hero-caption">Salon Interior</div>
     </div>
   </header>
@@ -350,7 +340,7 @@
     <div class="wrap concept">
       <div class="concept-media">
         <div class="concept-photo">
-          <img src="adoa-images/hero_1.png" alt="Hair Salon adoa 店内">
+          <img src="adoa-images/interior_mirrors_white.jpg" alt="Hair Salon adoa 店内">
         </div>
         <div class="concept-stats">
           <div>
@@ -436,15 +426,18 @@
         <p>シルキーグレーからボルドールビーまで。Instagramで発信している実例を、こちらにも並べていきます。</p>
       </div>
       <div class="gallery-grid">
-        <div class="swatch-tile t2 g-a"><span>bordeaux ruby</span></div>
-        <div class="swatch-tile t1 g-c"><span>silky gray</span></div>
-        <div class="swatch-tile t3 g-d"><span>lavender pink</span></div>
-        <div class="swatch-tile t5 g-b"><span>cobalt blue</span></div>
-        <div class="swatch-tile t4 g-e"><span>ash brown</span></div>
-        <div class="swatch-tile t6 g-f"><span>umbrella color</span></div>
-        <div class="swatch-tile t7 g-g"><span>spiral perm</span></div>
+        <div class="swatch-tile g-feature" style="background-image:url('adoa-images/bordeaux_ruby.jpg');"><span>bordeaux ruby</span></div>
+        <div class="swatch-tile" style="background-image:url('adoa-images/silky_graige.jpg');"><span>silky graige</span></div>
+        <div class="swatch-tile" style="background-image:url('adoa-images/mauve_pink.jpg');"><span>mauve pink</span></div>
+        <div class="swatch-tile" style="background-image:url('adoa-images/lavender_pink.jpg');"><span>lavender pink</span></div>
+        <div class="swatch-tile g-feature" style="background-image:url('adoa-images/cobalt_blue.jpg');"><span>cobalt blue</span></div>
+        <div class="swatch-tile" style="background-image:url('adoa-images/ash_graige.jpg');"><span>ash graige</span></div>
+        <div class="swatch-tile" style="background-image:url('adoa-images/umbrella_color.jpg');"><span>umbrella color</span></div>
+        <div class="swatch-tile" style="background-image:url('adoa-images/spiral_perm.jpg');"><span>spiral perm</span></div>
+        <div class="swatch-tile" style="background-image:url('adoa-images/mens_short_layer.jpg');"><span>men's short layer</span></div>
+        <div class="swatch-tile" style="background-image:url('adoa-images/red_highlight.jpg');"><span>red highlight</span></div>
       </div>
-      <p class="gallery-note">※写真は準備中です。店内・スタイル写真が届き次第、順次差し替えます。</p>
+      <p class="gallery-note">※Instagram(@hair.salon.adoa)に掲載中の実例です。今後も随時追加していきます。</p>
     </div>
   </section>
 
@@ -489,6 +482,10 @@
   </section>
 
   <hr class="rule">
+
+  <div style="width:100%; aspect-ratio:16/5; overflow:hidden; position:relative;">
+    <img src="adoa-images/sign_closeup.jpg" alt="Hair Salon adoa 看板" style="width:100%; height:100%; object-fit:cover; object-position:center 35%;">
+  </div>
 
   <section id="access">
     <div class="wrap">
